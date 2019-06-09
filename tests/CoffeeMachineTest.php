@@ -148,6 +148,35 @@ class CoffeeMachineTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals(3, $drink->getMilkLevel());
     }
 
+    public function testMilkSilenced()
+    {
+        $this->sut = new SUT(2, false, true);
+        $this->sut->milkButton(5);
+        $drink = $this->sut->coffeeButton();
+        $this->assertEquals(4, $drink->getMilkLevel());
+    }
+
+    public function testSugarSilenced()
+    {
+        $this->sut = new SUT(5, false, true);
+        $this->sut->sugarButton(11);
+        $drink = $this->sut->chocolateButton();
+        $this->assertEquals(4, $drink->getSugarLevel());
+    }
+
+    public function testMilkAndSugar()
+    {
+        $this->sut
+            ->milkButton(3)
+            ->sugarButton()
+            ->addCoin()
+            ->addCoin()
+        ;
+        $drink = $this->sut->coffeeButton();
+        $this->assertEquals(3, $drink->getMilkLevel()); //café au lait
+        $this->assertEquals(1, $drink->getSugarLevel()); //pas trop sucré
+    }
+
     /**
      * @expectedException LLegaz\CoffeeMachine\Exception\CoffeeMachineException
      */

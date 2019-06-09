@@ -1,12 +1,13 @@
-<?php
-declare(strict_types=1);
+<?php declare(strict_types=1);
+
 namespace LLegaz\CoffeeMachine;
 
-use LLegaz\CoffeeMachine\Drink\AbstractDrink;
-use LLegaz\CoffeeMachine\Drink\Chocolate;
-use LLegaz\CoffeeMachine\Drink\Coffee;
-use LLegaz\CoffeeMachine\Drink\Tea;
-//use LLegaz\CoffeeMachine\Drink\{AbstractDrink, Chocolate, Coffee, Tea};
+use LLegaz\CoffeeMachine\Drink\{
+    AbstractDrink,
+    Chocolate,
+    Coffee,
+    Tea,
+};
 use LLegaz\CoffeeMachine\Exception\CoffeeMachineException;
 
 /**
